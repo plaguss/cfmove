@@ -1,0 +1,8 @@
+black==22.1.0
+isort==5.10.1
+jupyterlab==3.2.9
+tensorflow==2.8.0
+yt-dlp==2022.2.4
+opencv-python==4.5.5.62
+tensorflow-hub==3.19.4
+imageio==2.16.0
