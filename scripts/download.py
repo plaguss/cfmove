@@ -3,7 +3,17 @@
 The videos are downloaded to a separate folder and after the movements
 are labeled, removed.
 
-The script must be executed from the root of the project.
+The script must be executed from the root of the project:
+
+It either downloads the whole content from urls.txt, or optionally
+set a start/end videos to download. The second example downloads the 5th
+video.
+
+    $ python scripts/download.py
+
+    $ python scripts/download.py --start 5 --end 6
+
+The contents are downloaded to videos folder.
 
 References
 ----------

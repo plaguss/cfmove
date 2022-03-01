@@ -2,6 +2,20 @@
 that can be ingested by ffmpeg-split.py
 
 Needs a path to a file, and the total number of frames.
+
+How to run the script:
+
+    $ python scripts/manifester.py --annotations "CF-moves_ds0_Friendly Fran - Online Semifinals Event 1_Bryan Hernandez.mp4.json"
+
+Takes as input an annotation file extracted from supervisely, stored in 
+annotations folder. 
+It does the following:
+- Generates the manifest.json (expected by the script
+ffmpeg-split.py,  which is run internally)
+- Generates the clips found in the json file inside the clips folder, each movement
+in its inner folder. The clips are named after the movement and a 
+counter (<movement>_<num>.mp4).
+
 """
 
 from __future__ import annotations
@@ -164,13 +178,6 @@ def get_video_duration(video: str) -> float:
     return float(result.stdout)
 
 
-path = "/home/agustin/github_repos/youtuber"
-path_video = (
-    path
-    + "/Tia-Clair Toomey CrossFit Games Event 1 FULL - Friendly Fran [2NizjQboIm8].mp4"
-)
-
-
 # python scripts/ffmpeg-split.py -v h264 -f '/home/agustin/github_repos/youtuber/Tia-Clair Toomey CrossFit Games Event 1 FULL - Friendly Fran [2NizjQboIm8].mp4' -m manifest.json
 
 if __name__ == "__main__":
@@ -192,4 +199,3 @@ if __name__ == "__main__":
 
     annotations.create_manifest()
     generate_clips(annotations.name)
-    # download(start=args["start"], end=args["end"])
